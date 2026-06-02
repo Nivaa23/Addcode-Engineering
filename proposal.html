@@ -81,6 +81,7 @@
         </div>
     </section>
     <!-- Zendesk-Inspired Dark Footer -->
+      <!-- Zendesk-Inspired Dark Footer -->
     <footer>
         <div class="container">
             <!-- 1. Grid Links -->
@@ -119,10 +120,10 @@
                 </div>
             </div>
             <!-- 2. Help Section -->
-            <div class="footer-help-section">
-                <h2>How can we help? <span>Contact us</span></h2>
+            <div class="footer-help-section" id="footerHelpSection">
+                <h2>How can we help? <a href="contact.html" style="color: #bbf7d0; text-decoration: none; cursor: pointer;">Contact us</a></h2>
                 <div class="footer-social">
-                    <a href="#"><i data-lucide="x"></i></a>
+                    <a href="#" id="closeHelpSection" style="cursor: pointer;"><i data-lucide="x"></i></a>
                     <a href="#"><i data-lucide="facebook"></i></a>
                     <a href="#"><i data-lucide="linkedin"></i></a>
                     <a href="#"><i data-lucide="youtube"></i></a>
@@ -139,14 +140,18 @@
                     <a href="#">Cookie policy</a>
                     <span>© 2026 ADDCODE Engineering Pvt Ltd.</span>
                 </div>
-                <!-- Filled Primary CTA -->
-                <a href="contact.html" class="btn btn-primary"
-                    style="border-radius: 50px; font-size: 0.85rem; padding: 0.75rem 1.5rem;">
-                    Contact Support <i data-lucide="message-square" style="width: 16px;"></i>
-                </a>
             </div>
         </div>
     </footer>
+
+    <script src="js/main.js?v=1.0.1"></script>
+    <script>
+        lucide.createIcons();
+        document.getElementById('closeHelpSection').addEventListener('click',function(e){
+            e.preventDefault();
+            document.getElementById('footerHelpSection').style.display = 'none';
+        });
+    </script>
     <script src="js/main.js?v=1.0.1"></script>
     <script>lucide.createIcons();</script>
     <script src="js/hero-bg.js?v=1.0.1"></script>

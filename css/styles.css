@@ -530,6 +530,22 @@ header {
     border-radius: 12px;
 }
 
+.card ul {
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.card ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+}
+
+.card ul li i {
+    flex-shrink: 0;
+}
+
 /* Reveal Animations */
 .reveal {
     opacity: 0;
@@ -970,7 +986,7 @@ footer {
 
 @media (max-width: 1024px) {
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
     .footer-grid {
         grid-template-columns: 1fr 1fr;

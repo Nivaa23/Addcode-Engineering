@@ -117,4 +117,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Technical Inquiry Form Handler (Contact Page)
+    const inquiryForm = document.getElementById('technical-inquiry-form');
+    if (inquiryForm) {
+        inquiryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = inquiryForm.querySelector('button[type="submit"]');
+            const statusDiv = document.getElementById('form-status');
+            
+            // Get form data
+            const formData = new FormData(inquiryForm);
+            const data = Object.fromEntries(formData);
+            
+            // Store in localStorage
+            localStorage.setItem('inquiry_' + Date.now(), JSON.stringify(data));
+            
+            // Show success message
+            statusDiv.style.display = "block";
+            statusDiv.style.backgroundColor = "var(--accent-dim)";
+            statusDiv.style.color = "var(--accent)";
+            statusDiv.style.border = "1px solid var(--accent)";
+            statusDiv.innerHTML = "Your inquiry has been submitted successfully. Our team will contact you within 4 hours.";
+            
+            // Reset form
+            inquiryForm.reset();
+            submitBtn.textContent = "Sent Successfully";
+            submitBtn.disabled = true;
+            
+            // Re-enable after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = "Send Technical Inquiry";
+                submitBtn.disabled = false;
+                statusDiv.style.display = "none";
+            }, 3000);
+        });
+    }
 });

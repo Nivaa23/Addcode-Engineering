@@ -76,11 +76,7 @@
                     </div>
                 </div>
                 <div class="contact-form-container reveal">
-                    <form id="technical-inquiry-form" action="https://formspree.io/f/your_formspree_id" method="POST">
-                        <!-- Technical Subject for Email -->
-                        <input type="hidden" name="_subject" value="New Technical Inquiry – ADDCODE Website">
-                        <!-- Honeypot Spam Protection -->
-                        <input type="text" name="_gotcha" style="display:none">
+                    <form id="technical-inquiry-form">
                         <div class="form-group">
                             <label>Professional Name</label>
                             <input type="text" name="name" placeholder="John Doe" required>
@@ -122,6 +118,7 @@
         </div>
     </section>
     <!-- Zendesk-Inspired Dark Footer -->
+    <!-- Zendesk-Inspired Dark Footer -->
     <footer>
         <div class="container">
             <!-- 1. Grid Links -->
@@ -160,10 +157,10 @@
                 </div>
             </div>
             <!-- 2. Help Section -->
-            <div class="footer-help-section">
-                <h2>How can we help? <span>Contact us</span></h2>
+            <div class="footer-help-section" id="footerHelpSection">
+                <h2>How can we help? <a href="contact.html" style="color: #bbf7d0; text-decoration: none; cursor: pointer;">Contact us</a></h2>
                 <div class="footer-social">
-                    <a href="#"><i data-lucide="x"></i></a>
+                    <a href="#" id="closeHelpSection" style="cursor: pointer;"><i data-lucide="x"></i></a>
                     <a href="#"><i data-lucide="facebook"></i></a>
                     <a href="#"><i data-lucide="linkedin"></i></a>
                     <a href="#"><i data-lucide="youtube"></i></a>
@@ -180,38 +177,51 @@
                     <a href="#">Cookie policy</a>
                     <span>© 2026 ADDCODE Engineering Pvt Ltd.</span>
                 </div>
-                <!-- Filled Primary CTA -->
-                <a href="contact.html" class="btn btn-primary"
-                    style="border-radius: 50px; font-size: 0.85rem; padding: 0.75rem 1.5rem;">
-                    Contact Support <i data-lucide="message-square" style="width: 16px;"></i>
-                </a>
             </div>
         </div>
     </footer>
+
     <script src="js/main.js?v=1.0.1"></script>
     <script>
         lucide.createIcons();
-        // Formspree AJAX Handler
+        document.getElementById('closeHelpSection').addEventListener('click',function(e){
+            e.preventDefault();
+            document.getElementById('footerHelpSection').style.display = 'none';
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        lucide.createIcons();
+        // Initialize EmailJS
+        emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+        
         const form = document.getElementById('technical-inquiry-form');
         const status = document.getElementById('form-status');
         const submitBtn = document.getElementById('submit-button');
+        
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
             // UI State: Loading
             submitBtn.disabled = true;
             submitBtn.textContent = "Sending...";
             status.style.display = "none";
-            const data = new FormData(e.target);
+            
             try {
-                const response = await fetch(e.target.action, {
-                    method: 'POST',
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                if (response.ok) {
-                    // Success
+                const formData = new FormData(form);
+                
+                const templateParams = {
+                    to_email: 'addcode@addcodeengineering.com',
+                    from_name: formData.get('name'),
+                    from_email: formData.get('email'),
+                    company: formData.get('company'),
+                    sector: formData.get('sector'),
+                    message: formData.get('message')
+                };
+                
+                const response = await emailjs.send('SERVICE_ID', 'TEMPLATE_ID', templateParams);
+                
+                if (response.status === 200) {
                     status.style.display = "block";
                     status.style.backgroundColor = "var(--accent-dim)";
                     status.style.color = "var(--accent)";
@@ -220,11 +230,9 @@
                     form.reset();
                     submitBtn.textContent = "Sent Successfully";
                 } else {
-                    // Fail
-                    throw new Error("Server responded with error");
+                    throw new Error("Failed to send email");
                 }
             } catch (error) {
-                // Error
                 status.style.display = "block";
                 status.style.backgroundColor = "#fee2e2";
                 status.style.color = "#991b1b";
