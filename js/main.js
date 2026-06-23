@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileToggle.innerHTML = '<i data-lucide="menu"></i>';
             mobileToggle.setAttribute('aria-label', 'Toggle Navigation');
             navContainer.appendChild(mobileToggle);
-            
+
             // Critical: Initialize icon immediately after creation
             if (window.lucide) {
                 lucide.createIcons();
@@ -77,11 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const toggleMenu = (forceClose = false) => {
             const isOpen = forceClose ? false : !navLinks.classList.contains('mobile-active');
-            
+
             navLinks.classList.toggle('mobile-active', isOpen);
             mobileToggle.classList.toggle('active', isOpen);
             mobileToggle.innerHTML = isOpen ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
-            
+
             document.body.style.overflow = isOpen ? 'hidden' : '';
 
             if (window.lucide) {
@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Click outside to close
         document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('mobile-active') && 
-                !navLinks.contains(e.target) && 
+            if (navLinks.classList.contains('mobile-active') &&
+                !navLinks.contains(e.target) &&
                 !mobileToggle.contains(e.target)) {
                 toggleMenu(true);
             }
@@ -117,4 +117,66 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Lightbox modal logic for Engineering Deliverables
+    const deliverablesModal = document.getElementById('deliverables-modal');
+    if (deliverablesModal) {
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalClose = document.getElementById('modal-close');
+
+        const openModal = (card) => {
+            const imgSrc = card.getAttribute('data-image');
+            const title = card.getAttribute('data-title');
+            const desc = card.getAttribute('data-desc');
+
+            if (modalImg && imgSrc) {
+                modalImg.src = imgSrc;
+                if (modalTitle) modalTitle.textContent = title || '';
+                if (modalDesc) modalDesc.textContent = desc || '';
+                
+                deliverablesModal.classList.add('active');
+                deliverablesModal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+            }
+        };
+
+        const closeModal = () => {
+            deliverablesModal.classList.remove('active');
+            deliverablesModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            if (modalImg) modalImg.src = '';
+        };
+
+        // Attach event listeners to all deliverable cards
+        document.querySelectorAll('.deliverable-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                openModal(card);
+            });
+        });
+
+        // Close on close button click
+        if (modalClose) {
+            modalClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeModal();
+            });
+        }
+
+        // Close on clicking backdrop overlay
+        deliverablesModal.addEventListener('click', (e) => {
+            if (e.target === deliverablesModal) {
+                closeModal();
+            }
+        });
+
+        // Close on Escape key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && deliverablesModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
 });
+
