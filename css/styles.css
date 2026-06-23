@@ -562,6 +562,22 @@ header {
     border-radius: 12px;
 }
 
+.card ul {
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.card ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+}
+
+.card ul li i {
+    flex-shrink: 0;
+}
+
 /* Reveal Animations */
 .reveal {
     opacity: 0;
@@ -1293,7 +1309,8 @@ footer {
 .deliverables-modal {
     position: fixed;
     inset: 0;
-    z-index: 2100; /* Must be above header which is 1000 and mobile menu which is 2000 */
+    z-index: 2100;
+    /* Must be above header which is 1000 and mobile menu which is 2000 */
     background-color: rgba(15, 23, 42, 0.9);
     backdrop-filter: blur(12px);
     display: flex;
@@ -1390,4 +1407,4 @@ footer {
 /* Scroll lock when modal is open */
 body.modal-open {
     overflow: hidden;
-}
+}
