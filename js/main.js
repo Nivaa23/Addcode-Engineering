@@ -188,6 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Attach event listeners to all deliverable cards
         document.querySelectorAll('.deliverable-card').forEach(card => {
             card.addEventListener('click', (e) => {
+                const btn = e.target.closest('.view-deliverable-btn');
+                if (btn) {
+                    e.preventDefault();
+                }
                 openModal(card);
             });
         });
