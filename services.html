@@ -38,6 +38,64 @@
             </div>
         </div>
     </section>
+
+    <!-- Engineering Deliverables Section -->
+    <section id="deliverables" class="deliverables-section">
+        <div class="container">
+            <div class="reveal" style="margin-bottom: 6rem;">
+                <span class="section-tag">Our Capabilities</span>
+                <h2 class="section-title">Engineering Deliverables</h2>
+                <p style="color: var(--text-secondary); max-width: 600px; font-size: 1.25rem;">A showcase of engineering
+                    documentation and deliverables produced across instrumentation, automation, and process engineering
+                    projects.</p>
+            </div>
+            <div class="card-grid">
+                <!-- Card 1 -->
+                <div class="card reveal deliverable-card" data-title="P&ID Engineering"
+                    data-desc="Process and Instrumentation Diagrams developed for complex industrial systems and process facilities."
+                    data-image="assets/images/pid_drawing.png">
+                    <div class="deliverable-image-container">
+                        <img src="assets/images/pid_drawing.png" alt="P&ID Engineering preview">
+                    </div>
+                    <h3>P&ID Engineering</h3>
+                    <p>Process and Instrumentation Diagrams developed for complex industrial systems and process
+                        facilities.</p>
+                    <a href="#" class="view-deliverable-btn" aria-label="View full drawing of P&ID Engineering"
+                        style="margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 700;">View
+                        Drawing
+                        <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i></a>
+                </div>
+                <!-- Card 2 -->
+                <div class="card reveal deliverable-card" data-title="Instrument Loop Diagrams"
+                    data-desc="Detailed field-to-control system instrumentation mapping and connectivity documentation."
+                    data-image="assets/images/loop_diagram.png">
+                    <div class="deliverable-image-container">
+                        <img src="assets/images/loop_diagram.png" alt="Instrument Loop Diagrams preview">
+                    </div>
+                    <h3>Instrument Loop Diagrams</h3>
+                    <p>Detailed field-to-control system instrumentation mapping and connectivity documentation.</p>
+                    <a href="#" class="view-deliverable-btn" aria-label="View full drawing of Instrument Loop Diagrams"
+                        style="margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 700;">View
+                        Drawing <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i></a>
+                </div>
+                <!-- Card 3 -->
+                <div class="card reveal deliverable-card" data-title="PLC & Control System Engineering"
+                    data-desc="Control system architecture, signal mapping, and automation engineering deliverables."
+                    data-image="assets/images/plc_drawing.png">
+                    <div class="deliverable-image-container">
+                        <img src="assets/images/plc_drawing.png" alt="PLC & Control System Engineering preview">
+                    </div>
+                    <h3>PLC & Control System Engineering</h3>
+                    <p>Control system architecture, signal mapping, and automation engineering deliverables.</p>
+                    <a href="#" class="view-deliverable-btn"
+                        aria-label="View full drawing of PLC & Control System Engineering"
+                        style="margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 700;">View
+                        Drawing <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Grid -->
     <section id="services-main" class="section">
         <div class="container">
@@ -176,7 +234,8 @@
             </div>
             <!-- 2. Help Section -->
             <div class="footer-help-section" id="footerHelpSection">
-                <h2>How can we help? <a href="contact.html" style="color: #bbf7d0; text-decoration: none; cursor: pointer;">Contact us</a></h2>
+                <h2>How can we help? <a href="contact.html"
+                        style="color: #bbf7d0; text-decoration: none; cursor: pointer;">Contact us</a></h2>
                 <div class="footer-social">
                     <a href="#" id="closeHelpSection" style="cursor: pointer;"><i data-lucide="x"></i></a>
                     <a href="#"><i data-lucide="facebook"></i></a>
@@ -202,7 +261,7 @@
     <script src="js/main.js?v=1.0.1"></script>
     <script>
         lucide.createIcons();
-        document.getElementById('closeHelpSection').addEventListener('click',function(e){
+        document.getElementById('closeHelpSection').addEventListener('click', function (e) {
             e.preventDefault();
             document.getElementById('footerHelpSection').style.display = 'none';
         });
@@ -210,6 +269,21 @@
     <script src="js/main.js?v=1.0.1"></script>
     <script>lucide.createIcons();</script>
     <script src="js/hero-bg.js?v=1.0.1"></script>
+    <!-- Lightbox Modal for Engineering Drawings -->
+    <div id="deliverables-modal" class="deliverables-modal" aria-hidden="true" role="dialog">
+        <button id="modal-close" class="modal-close-btn" aria-label="Close modal">
+            <i data-lucide="x"></i>
+        </button>
+        <div class="modal-wrapper">
+            <div class="modal-image-container">
+                <img id="modal-img" src="" alt="Full resolution engineering drawing">
+            </div>
+            <div class="modal-caption">
+                <h4 id="modal-title">Drawing Title</h4>
+                <p id="modal-desc">Drawing description goes here.</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
