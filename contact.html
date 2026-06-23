@@ -13,7 +13,8 @@
     <!-- Standard Nav (Synchronized) -->
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo">ADDCODE<span>ENGINEERING</span></a>
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Addcode Engineering Logo">Addcode
+                <span>Engineering</span></a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -125,8 +126,9 @@
             <div class="footer-top">
                 <div class="footer-grid">
                     <div>
-                        <a href="index.html" class="logo"
-                            style="font-size: 1.5rem; color: #fff;">ADDCODE<span>ENGINEERING</span></a>
+                        <a href="index.html" class="logo" style="font-size: 1.5rem; color: #fff;"><img
+                                src="assets/images/logo.png" alt="Addcode Engineering Logo">Addcode
+                            <span>Engineering</span></a>
                         <p style="color: var(--text-light); margin-top: 1.5rem; line-height: 1.8;">Technical design
                             excellence for high-stakes industrial infrastructure.</p>
                     </div>
@@ -158,7 +160,8 @@
             </div>
             <!-- 2. Help Section -->
             <div class="footer-help-section" id="footerHelpSection">
-                <h2>How can we help? <a href="contact.html" style="color: #bbf7d0; text-decoration: none; cursor: pointer;">Contact us</a></h2>
+                <h2>How can we help? <a href="contact.html"
+                        style="color: #bbf7d0; text-decoration: none; cursor: pointer;">Contact us</a></h2>
                 <div class="footer-social">
                     <a href="#" id="closeHelpSection" style="cursor: pointer;"><i data-lucide="x"></i></a>
                     <a href="#"><i data-lucide="facebook"></i></a>
@@ -184,7 +187,7 @@
     <script src="js/main.js?v=1.0.1"></script>
     <script>
         lucide.createIcons();
-        document.getElementById('closeHelpSection').addEventListener('click',function(e){
+        document.getElementById('closeHelpSection').addEventListener('click', function (e) {
             e.preventDefault();
             document.getElementById('footerHelpSection').style.display = 'none';
         });
@@ -194,22 +197,22 @@
         lucide.createIcons();
         // Initialize EmailJS
         emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
-        
+
         const form = document.getElementById('technical-inquiry-form');
         const status = document.getElementById('form-status');
         const submitBtn = document.getElementById('submit-button');
-        
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // UI State: Loading
             submitBtn.disabled = true;
             submitBtn.textContent = "Sending...";
             status.style.display = "none";
-            
+
             try {
                 const formData = new FormData(form);
-                
+
                 const templateParams = {
                     to_email: 'addcode@addcodeengineering.com',
                     from_name: formData.get('name'),
@@ -218,9 +221,9 @@
                     sector: formData.get('sector'),
                     message: formData.get('message')
                 };
-                
+
                 const response = await emailjs.send('SERVICE_ID', 'TEMPLATE_ID', templateParams);
-                
+
                 if (response.status === 200) {
                     status.style.display = "block";
                     status.style.backgroundColor = "var(--accent-dim)";

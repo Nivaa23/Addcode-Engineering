@@ -272,12 +272,21 @@ header {
     font-size: clamp(0.9rem, 5vw, 1.15rem);
     letter-spacing: -0.04em;
     color: var(--text-primary);
-    text-transform: uppercase;
+    text-transform: none;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .logo span {
     color: var(--accent);
+}
+
+.logo img {
+    height: 42px;
+    width: auto;
+    display: block;
 }
 
 .nav-links {
