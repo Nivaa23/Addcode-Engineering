@@ -241,10 +241,9 @@
 
     .nav-container {
         display: grid;
-        grid-template-columns: 1.5fr auto 1.5fr;
+        grid-template-columns: auto 1fr auto;
         align-items: center;
-        padding: 0 0.5rem 0 1.5rem;
-        gap: clamp(1rem, 3vw, 2.5rem);
+        padding: 0 1.5rem;
         width: 100%;
     }
 
@@ -293,7 +292,7 @@
     }
 
     header .logo img {
-        height: 40px;
+        height: 50px;
     }
 
     .nav-links {
@@ -510,7 +509,7 @@
         font-size: clamp(1rem, 2vw, 1.25rem);
         color: var(--text-secondary);
         font-weight: 400;
-        max-width: 680px;
+        max-width: 920px;
         margin: 0 auto 4rem auto;
         line-height: 1.6;
     }
@@ -578,6 +577,18 @@
         align-items: center;
         justify-content: center;
         border-radius: 12px;
+    }
+
+    .card h3 {
+        margin: 0 0 1rem;
+        font-size: clamp(1.25rem, 3vw, 1.5rem);
+        line-height: 1.2;
+    }
+
+    .card p {
+        margin: 0;
+        line-height: 1.7;
+        color: var(--text-secondary);
     }
 
     .card ul {
