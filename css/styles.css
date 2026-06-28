@@ -290,6 +290,14 @@
         flex-shrink: 0;
     }
 
+    header .logo {
+        gap: 0.5rem;
+    }
+
+    header .logo img {
+        height: 40px;
+    }
+
     .nav-links {
         display: flex;
         gap: 1.75rem;
